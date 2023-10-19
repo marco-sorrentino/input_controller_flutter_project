@@ -3,7 +3,9 @@ import 'package:input_controller/model/people.dart';
 import 'package:input_controller/style/button_style.dart';
 
 class PeopleModal extends StatefulWidget {
-  const PeopleModal({super.key});
+  const PeopleModal({super.key, required this.onAddPeople});
+
+  final void Function(People peopleParameter) onAddPeople;
 
   @override
   State<PeopleModal> createState() {
@@ -23,6 +25,29 @@ class _PeopleModalState extends State<PeopleModal> {
     surnameController.dispose();
     locationController.dispose();
     super.dispose();
+  }
+
+  void submitToTheList() {
+    widget.onAddPeople(
+      People(
+          name: nameController.text,
+          surname: surnameController.text,
+          gender: selectedGender.toString().split('.').last,
+          location: locationController.text),
+    );
+
+    Navigator.pop(context);
+  }
+
+  void selectGenderFunction(value) {
+    if (value == null) {
+      return;
+    }
+    setState(
+      () {
+        selectedGender = value;
+      },
+    );
   }
 
   @override
@@ -73,25 +98,11 @@ class _PeopleModalState extends State<PeopleModal> {
                       ),
                     )
                     .toList(),
-                onChanged: (value) {
-                  if (value == null) {
-                    return;
-                  }
-                  setState(
-                    () {
-                      selectedGender = value;
-                    },
-                  );
-                },
+                onChanged: selectGenderFunction,
               ),
               const Spacer(),
               ElevatedButton(
-                onPressed: () {
-                  print(nameController.text);
-                  print(surnameController.text);
-                  print(locationController.text);
-                  print(selectedGender);
-                },
+                onPressed: submitToTheList,
                 child: const Text("SUBMIT"),
               )
             ],
