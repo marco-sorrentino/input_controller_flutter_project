@@ -8,7 +8,7 @@ class PeopleTracker extends StatelessWidget {
   Widget build(context) {
     return const MaterialApp(
       home: Scaffold(
-        backgroundColor: Color.fromARGB(255, 37, 37, 37),
+        backgroundColor: Color.fromARGB(255, 27, 27, 27),
         body: PeopleLayout(),
       ),
     );

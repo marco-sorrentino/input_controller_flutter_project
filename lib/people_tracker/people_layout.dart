@@ -37,7 +37,7 @@ class _PeopleLayoutState extends State<PeopleLayout> {
   @override
   Widget build(context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 40),
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 40),
       child: Column(
         children: [
           PeopleNav(onAddPeople: addPeopleToList),

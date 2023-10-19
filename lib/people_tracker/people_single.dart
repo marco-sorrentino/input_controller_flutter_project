@@ -19,7 +19,7 @@ class PeopleSingle extends StatelessWidget {
   Widget build(context) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      color: const Color.fromARGB(133, 0, 0, 0),
+      color: const Color.fromARGB(109, 0, 0, 0),
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
         child: Row(

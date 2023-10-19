@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:input_controller/model/people.dart';
 import 'package:input_controller/style/button_style.dart';
@@ -104,7 +105,7 @@ class _PeopleModalState extends State<PeopleModal> {
               ElevatedButton(
                 onPressed: submitToTheList,
                 child: const Text("SUBMIT"),
-              )
+              ),
             ],
           )
         ],

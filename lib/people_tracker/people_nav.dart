@@ -19,19 +19,22 @@ class PeopleNav extends StatelessWidget {
       );
     }
 
-    return Row(
-      children: [
-        const Text(
-          "People tracker",
-          style: myTextStyle,
-        ),
-        const Spacer(),
-        ElevatedButton(
-          style: navElevatedButton,
-          onPressed: openModal,
-          child: const Text("ADD", style: boldText),
-        )
-      ],
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 5),
+      child: Row(
+        children: [
+          const Text(
+            "People tracker",
+            style: myTextStyle,
+          ),
+          const Spacer(),
+          ElevatedButton(
+            style: navElevatedButton,
+            onPressed: openModal,
+            child: const Text("ADD", style: boldText),
+          )
+        ],
+      ),
     );
   }
 }
