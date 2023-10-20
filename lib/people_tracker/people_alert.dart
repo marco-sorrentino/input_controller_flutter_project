@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class PeopleAlert extends StatelessWidget {
@@ -5,10 +6,7 @@ class PeopleAlert extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return AlertDialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-      ),
+    return CupertinoAlertDialog(
       title: const Text("Invalid input"),
       content: const Text(
           "Please make sure a valid title, amount, date and category was entered"),
