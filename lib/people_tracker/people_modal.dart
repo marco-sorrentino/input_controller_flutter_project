@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:input_controller/model/people.dart';
+import 'package:input_controller/people_tracker/people_alert.dart';
 import 'package:input_controller/style/button_style.dart';
 
 class PeopleModal extends StatefulWidget {
@@ -34,18 +35,21 @@ class _PeopleModalState extends State<PeopleModal> {
     var checkLocation = locationController.text == "";
 
     if (checkName || checkSurname || checkLocation) {
-      print("error");
+      showDialog(
+        context: context,
+        builder: (context) => const PeopleAlert(),
+      );
     } else {
+      Navigator.pop(context);
       widget.onAddPeople(
         People(
-            name: nameController.text,
-            surname: surnameController.text,
-            gender: selectedGender.toString().split('.').last,
-            location: locationController.text),
+          name: nameController.text,
+          surname: surnameController.text,
+          gender: selectedGender.toString().split('.').last,
+          location: locationController.text,
+        ),
       );
     }
-
-    Navigator.pop(context);
   }
 
   void selectGenderFunction(value) {
