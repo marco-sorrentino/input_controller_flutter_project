@@ -34,6 +34,28 @@ class _PeopleLayoutState extends State<PeopleLayout> {
     });
   }
 
+  void removePeopleToTheList(People people) {
+    var indexOfPeople = peopleList.indexOf(people);
+    setState(() {
+      peopleList.remove(people);
+    });
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: const Text("People delated"),
+      duration: const Duration(seconds: 3),
+      action: SnackBarAction(
+        label: "undo",
+        onPressed: () {
+          setState(
+            () {
+              peopleList.insert(indexOfPeople, people);
+            },
+          );
+        },
+      ),
+    ));
+  }
+
   @override
   Widget build(context) {
     return Container(
@@ -41,7 +63,7 @@ class _PeopleLayoutState extends State<PeopleLayout> {
       child: Column(
         children: [
           PeopleNav(onAddPeople: addPeopleToList),
-          PeopleList(peopleList: peopleList),
+          PeopleList(peopleList: peopleList, onRemove: removePeopleToTheList),
         ],
       ),
     );
