@@ -29,13 +29,21 @@ class _PeopleModalState extends State<PeopleModal> {
   }
 
   void submitToTheList() {
-    widget.onAddPeople(
-      People(
-          name: nameController.text,
-          surname: surnameController.text,
-          gender: selectedGender.toString().split('.').last,
-          location: locationController.text),
-    );
+    var checkName = nameController.text == "";
+    var checkSurname = surnameController.text == "";
+    var checkLocation = locationController.text == "";
+
+    if (checkName || checkSurname || checkLocation) {
+      print("error");
+    } else {
+      widget.onAddPeople(
+        People(
+            name: nameController.text,
+            surname: surnameController.text,
+            gender: selectedGender.toString().split('.').last,
+            location: locationController.text),
+      );
+    }
 
     Navigator.pop(context);
   }
