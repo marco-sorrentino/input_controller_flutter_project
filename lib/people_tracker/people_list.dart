@@ -40,7 +40,7 @@ class _PeopleListState extends State<PeopleList> {
                   surname: widget.peopleList[index].surname,
                   location: widget.peopleList[index].location,
                   gender: widget.peopleList[index].gender),
-              const SizedBox(height: 5),
+              const SizedBox(height: 6),
             ],
           ),
         ),

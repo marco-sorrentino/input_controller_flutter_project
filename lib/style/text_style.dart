@@ -14,3 +14,9 @@ const TextStyle whiteText = TextStyle(
   color: Color.fromARGB(255, 227, 227, 227),
   fontSize: 16,
 );
+
+const TextStyle fieldStyle = TextStyle(
+  color: Color.fromRGBO(227, 239, 142, 1),
+  fontSize: 18,
+  fontWeight: FontWeight.bold,
+);

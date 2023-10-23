@@ -1,11 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class PeopleAlert extends StatelessWidget {
+class PeopleAlert extends StatefulWidget {
   const PeopleAlert({super.key});
 
   @override
-  Widget build(context) {
+  State<PeopleAlert> createState() {
+    return _PeopleAlertState();
+  }
+}
+
+class _PeopleAlertState extends State<PeopleAlert> {
+  @override
+  Widget build(contenxt) {
     return CupertinoAlertDialog(
       title: const Text("Invalid input"),
       content: const Text(

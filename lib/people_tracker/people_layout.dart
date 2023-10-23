@@ -34,26 +34,32 @@ class _PeopleLayoutState extends State<PeopleLayout> {
     });
   }
 
+  void reInsertPeopleToTheList(int indexOfPeople, People people) {
+    setState(
+      () {
+        peopleList.insert(indexOfPeople, people);
+      },
+    );
+  }
+
   void removePeopleToTheList(People people) {
     var indexOfPeople = peopleList.indexOf(people);
     setState(() {
       peopleList.remove(people);
     });
     ScaffoldMessenger.of(context).clearSnackBars();
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: const Text("People delated"),
-      duration: const Duration(seconds: 3),
-      action: SnackBarAction(
-        label: "undo",
-        onPressed: () {
-          setState(
-            () {
-              peopleList.insert(indexOfPeople, people);
-            },
-          );
-        },
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: const Text("People delated"),
+        duration: const Duration(seconds: 3),
+        action: SnackBarAction(
+          label: "undo",
+          onPressed: () {
+            reInsertPeopleToTheList(indexOfPeople, people);
+          },
+        ),
       ),
-    ));
+    );
   }
 
   @override
@@ -63,7 +69,10 @@ class _PeopleLayoutState extends State<PeopleLayout> {
       child: Column(
         children: [
           PeopleNav(onAddPeople: addPeopleToList),
-          PeopleList(peopleList: peopleList, onRemove: removePeopleToTheList),
+          PeopleList(
+            peopleList: peopleList,
+            onRemove: removePeopleToTheList,
+          ),
         ],
       ),
     );

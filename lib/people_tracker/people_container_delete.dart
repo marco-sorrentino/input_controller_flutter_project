@@ -12,17 +12,20 @@ class PeopleContainerDelete extends StatelessWidget {
       child: Center(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: const Row(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Icon(Icons.arrow_back_ios_new_rounded,
+              const Icon(Icons.arrow_back_ios_new_rounded,
                   color: Colors.white, size: 15.0),
-              Text(
-                "DELETE",
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 10),
+                child: const Text(
+                  "DELETE",
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
               ),
             ],
           ),

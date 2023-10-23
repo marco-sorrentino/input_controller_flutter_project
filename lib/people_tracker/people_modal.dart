@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:input_controller/model/people.dart';
 import 'package:input_controller/people_tracker/people_alert.dart';
 import 'package:input_controller/style/button_style.dart';
+import 'package:input_controller/style/text_style.dart';
 
 class PeopleModal extends StatefulWidget {
   const PeopleModal({super.key, required this.onAddPeople});
@@ -70,31 +71,102 @@ class _PeopleModalState extends State<PeopleModal> {
     }
 
     return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Color.fromRGBO(20, 20, 20, 1),
+            Color.fromRGBO(29, 29, 29, 1),
+          ],
+        ),
+      ),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Column(
         children: [
           Container(
+            margin: const EdgeInsets.fromLTRB(0, 30, 0, 30),
             alignment: Alignment.centerRight,
             child: ElevatedButton(
-              style: navElevatedButton,
+              style: closeElevatedButton,
               onPressed: closeModal,
-              child: const Icon(Icons.close), // Icona del pulsante
+              child: const Icon(
+                Icons.close,
+                size: 18,
+              ),
             ),
           ),
-          TextField(
-            controller: nameController,
-            keyboardType: TextInputType.name,
-            decoration: const InputDecoration(labelText: "Write your name"),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                "Insert your name",
+                style: fieldStyle,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              CupertinoTextField.borderless(
+                controller: nameController,
+                keyboardType: TextInputType.name,
+                placeholder: "Insert your name",
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 55, 55, 55),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+            ],
           ),
-          TextField(
-            controller: surnameController,
-            keyboardType: TextInputType.name,
-            decoration: const InputDecoration(labelText: "Write your surname"),
+          const SizedBox(
+            height: 20,
           ),
-          TextField(
-            controller: locationController,
-            keyboardType: TextInputType.streetAddress,
-            decoration: const InputDecoration(labelText: "Write your location"),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                "Insert your Surname",
+                style: fieldStyle,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              CupertinoTextField.borderless(
+                controller: surnameController,
+                keyboardType: TextInputType.name,
+                placeholder: "Insert your name",
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 55, 55, 55),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                "Insert your Location",
+                style: fieldStyle,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              CupertinoTextField.borderless(
+                controller: locationController,
+                keyboardType: TextInputType.name,
+                placeholder: "Insert your name",
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 55, 55, 55),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 20,
           ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -115,6 +187,7 @@ class _PeopleModalState extends State<PeopleModal> {
               ),
               const Spacer(),
               ElevatedButton(
+                style: submitElevatedButton,
                 onPressed: submitToTheList,
                 child: const Text("SUBMIT"),
               ),
