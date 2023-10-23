@@ -6,8 +6,9 @@ ButtonStyle navElevatedButton = ElevatedButton.styleFrom(
       Radius.circular(10),
     ),
   ),
-  backgroundColor: const Color.fromRGBO(181, 146, 253, 1),
+  backgroundColor: const Color.fromRGBO(54, 246, 175, 1),
   padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+  foregroundColor: Colors.black,
 );
 
 ButtonStyle closeElevatedButton = ElevatedButton.styleFrom(

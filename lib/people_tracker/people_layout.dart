@@ -26,6 +26,12 @@ class _PeopleLayoutState extends State<PeopleLayout> {
       gender: "Male",
       location: "Rome",
     ),
+    People(
+      name: "Eleonora",
+      surname: "Troisi",
+      gender: "Female",
+      location: "Florence",
+    )
   ];
 
   void addPeopleToList(People peopleParameter) {
