@@ -21,6 +21,8 @@ class _PeopleModalState extends State<PeopleModal> {
   final nameController = TextEditingController();
   final surnameController = TextEditingController();
   final locationController = TextEditingController();
+  bool theresName = false;
+  bool theresSurname = false;
 
   @override
   void dispose() {
@@ -36,6 +38,10 @@ class _PeopleModalState extends State<PeopleModal> {
     var checkLocation = locationController.text == "";
 
     if (checkName || checkSurname || checkLocation) {
+      setState(() {
+        theresName = true;
+        theresSurname = true;
+      });
       showDialog(
         context: context,
         builder: (context) => const PeopleAlert(),
@@ -50,6 +56,10 @@ class _PeopleModalState extends State<PeopleModal> {
           location: locationController.text,
         ),
       );
+      setState(() {
+        theresName = false;
+        theresSurname = false;
+      });
     }
   }
 
@@ -115,6 +125,14 @@ class _PeopleModalState extends State<PeopleModal> {
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
+              if (theresName)
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: Text(
+                    "lol",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                )
             ],
           ),
           const SizedBox(
@@ -139,6 +157,14 @@ class _PeopleModalState extends State<PeopleModal> {
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
+              if (theresSurname)
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: Text(
+                    "Miss Surname",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                )
             ],
           ),
           const SizedBox(
